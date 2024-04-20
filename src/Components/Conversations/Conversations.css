@@ -1,0 +1,44 @@
+.conversation-top{
+  background-color: #333;
+  margin: 0.5rem;
+  border-radius: 0.3rem;
+  border-bottom: 1px solid #888;
+  /* box-shadow: 0.1px 0.1px 3px #888888; */
+}
+.conversation-top:hover{
+background-color: #6A0DAD;
+}
+.conversation{
+  height: 5rem;
+  font-family: "Josefin Sans", sans-serif;
+  border-radius: 0.3rem;
+  display: grid;
+  place-items: center;
+ grid-template-columns: 6rem auto;
+  width: 100%;
+}
+
+.conversation>img{
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+  
+}
+.conversation-information{
+  display: grid;
+  justify-items: start;
+  align-items: center;
+  width: 100%;
+}
+.conversation-information>p{
+color: #f0f2f5;
+font-size: 1.15rem;
+padding: 0;
+  margin: 0;
+}
+.conversation-information>span{
+  font-size: 1.05rem;
+  color: green;
+  padding: 0;
+  margin: 0;
+}

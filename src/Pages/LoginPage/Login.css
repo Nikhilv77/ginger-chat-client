@@ -1,0 +1,15 @@
+.login{
+display: grid;
+place-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+}
+.login-container{
+  display: grid;
+grid-template-columns: 1fr 1fr;
+place-items: center;
+gap: 2rem;
+  height: 100%;
+  width: 75vw;
+}

@@ -1,0 +1,105 @@
+.all-members-modal{
+  height: 85vh;
+  width: 50vw;
+  background-color: var(--logoTextColorPrimary);
+  border-radius: 0.4rem;
+  box-shadow: 2px 2px 5px rgb(0,0,0);
+  position: fixed;
+  display: grid;
+  place-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  transition: 0.5s ease-in-out;
+  z-index: 1001;
+}
+.ri-close-large-line{
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  color: #fff;
+  font-size: 2.3rem;
+  filter: drop-shadow(2px 2px 2px rgb(0,0,0));
+  cursor: pointer;
+}
+.all-members-modal-container{
+  background-color: #333;
+  width: 95%;
+  height: 92%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+ justify-content: flex-start;
+ align-items: center;
+  gap: 2rem;
+  border-radius: 0.4rem;
+  padding: 2rem;
+  overflow-y: scroll;
+}
+.all-members-modal-container>h2{
+  font-size: 2rem;
+  color: #f0f2f5;
+  font-weight: 500;
+}
+.all-members-modal-items{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center;
+ gap: 1rem;
+  height: 90%;
+  width: 90%;
+  overflow-y: scroll;
+}
+
+.all-members-modal-item{
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+}
+.all-members-modal-item>img{
+  height: 95%;
+  width: 90%;
+  border-radius: 0.2rem;
+  align-self: end;
+  object-fit: contain;
+  background-color: #000;
+}
+.all-members-modal-item-description{
+  display: grid;
+  place-items: center;
+  gap: 0.7rem;
+  width: 90%;
+  text-align: center;
+}
+.all-members-modal-item-names{
+  display: grid;
+  place-items: center;
+  gap: 0.3rem;
+}
+.all-members-modal-item-names>p:nth-child(1){
+  color: var(--logoTextColorPrimary);
+  font-size: 1.4rem;
+}
+
+.all-members-modal-item-names>p{
+  color: var(--logoTextColorPrimary);
+  font-size: 1.2rem;
+}
+.all-members-modal-item-description>span{
+  color: #f0f2f5;
+  font-size: 1.2rem;
+}
+
+.all-members-modal-item>button{
+  border-radius: 0.4rem;
+  padding: 0.8rem 1.3rem 0.8rem 1.3rem;
+  border: none;
+  outline: none;
+  font-family: var(--font-family);
+  background-color: var(--logoTextColorPrimary);
+  font-size: 1.1rem;
+  color: #333;
+  cursor: pointer;
+  font-weight: 600;
+}

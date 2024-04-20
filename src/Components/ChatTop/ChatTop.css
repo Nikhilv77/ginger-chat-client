@@ -1,0 +1,109 @@
+.chat-top{
+  width: 100%;
+  height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
+padding-left: 3rem;
+padding-top: 0.3rem;
+font-family: "Josefin Sans", sans-serif;
+padding-right: 3rem;
+position: relative;
+background-color: #333;
+box-shadow: 0.3px 0.3px 8px #888888;
+}
+.chat-top-upper{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 5rem;
+  padding: 1rem;
+  border-bottom: 1px solid #888888;
+  padding-bottom: 0.3rem;
+
+  border-radius: 0.3rem;
+}
+.chat-top-hr{
+  border: 1px solid #888888;
+}
+.chat-top-upper>p{
+  font-size: 1.2rem;
+  color: #f0f2f5;
+}
+.chat-top-upper>img{
+height: 3.5rem;
+width: 3.5rem;
+border-radius: 50%;
+}
+.chat-top-body{
+ height: 65vh;
+  width: 100%;
+  overflow-y: scroll;
+display: grid;
+align-items: start;
+
+align-self: start;
+}
+
+.my-message{
+ justify-self: end;
+background-color: #ffdf00;
+padding: 0.5rem 1rem 0.5rem 1rem;
+display: grid;
+place-items: center;
+margin-top: 0.7rem;
+border-radius: 0.9rem 0.4rem 0.9rem 0.4rem;
+max-width: 25%;
+color: #333;
+height: auto;
+font-size: 1.3rem;
+box-shadow: 1px 1px 2px #333;
+margin-right: 0.2rem;
+margin-bottom: 0.3rem;
+}
+.my-message>span, .others-message>span{
+  font-size: 0.8rem;
+}
+.others-message{
+  justify-self: start;
+  margin-top: 0.7rem;
+  background-color: #6A0DAD;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  display: grid;
+  place-items: center;
+  max-width: 25%;
+  border-radius: 0.9rem 0.4rem 0.9rem 0.4rem;
+  color: var(--cardColor);
+  height: auto;
+  box-shadow: 1px 1px 2px #333;
+  font-size: 1.3rem;
+}
+.chat-top-bottom{
+  display: flex;
+width: 98%;
+position: absolute;
+bottom: 2%;
+margin: auto;
+z-index: 999;
+height: 6rem;
+display: grid;
+grid-template-columns: auto 4rem;
+place-items: center;
+padding: 0.5rem 0 0 0;
+}
+.chat-top-bottom>button{
+  background-color:#ffdf00;
+  border-radius: 0.3rem;
+  padding: 0.6rem 1.1rem 0.6rem 1.1rem;
+  margin: 0 0.3rem 0 0.3rem;
+  color: #333;
+  font-family: "Josefin Sans", sans-serif;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+

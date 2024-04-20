@@ -1,0 +1,108 @@
+.comment-modal{
+  height: 80vh;
+  width: 40vw;
+  background-color: var(--logoTextColorPrimary);
+  border-radius: 0.4rem;
+  box-shadow: 2px 2px 5px rgb(0,0,0);
+  position: fixed;
+  display: grid;
+  place-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  transition: 0.5s ease-in-out;
+  z-index: 1001;
+}
+.comment-modal-container{
+  background-color: #333;
+  overflow-y: scroll;
+  width: 95%;
+  height: 95%;
+  position: relative;
+  border-radius: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment-modal-items{
+  overflow-y: scroll;
+  width: 90%;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.comment-modal-item{
+  width: 90%;
+ padding: 0.5rem;
+ display: grid;
+ place-items: center;
+ gap: 0.5rem;
+}
+.comment-modal-item>span{
+  color: var(--logoTextColorPrimary);
+}
+.comment-modal-item>h4{
+  color: var(--logoTextColorPrimary);
+  font-size: 1.4rem;
+}
+.comment-modal-item>p{
+  color: #f0f2f5;
+  font-size: 1.2rem;
+}
+
+.comment-modal-container>i{
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  color: #fff;
+  font-size: 2rem;
+  filter: drop-shadow(2px 2px 2px rgb(0,0,0));
+  cursor: pointer;
+}
+.comment-line{
+  width: 100%;
+  border: 1px solid #f0f2f5;
+}
+.add-comment{
+  display: grid;
+  justify-items: start;
+  width: 90%;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  z-index: 500;
+  margin-bottom: 0.5rem;
+}
+.add-comment>textarea{
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  background-color: var(--logoTextColorPrimary);
+  font-family: var(--font-family);
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.add-comment>button{
+  border-radius: 0.4rem;
+  padding: 0.8rem 1.3rem 0.8rem 1.3rem;
+  border: none;
+  outline: none;
+  font-family: var(--font-family);
+  background-color: var(--logoTextColorPrimary);
+  font-size: 1.1rem;
+  color: var(--black);
+  cursor: pointer;
+  font-weight: 600;
+}
+.no-comments{
+  font-size: 1.3rem;
+  color: #f0f2f5;
+  margin: auto;
+}

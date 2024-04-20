@@ -1,0 +1,65 @@
+.post{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    background-color: #f0f2f5;
+    box-shadow: 1px 1px 7px rgba(0,0,0,0.5);
+    justify-content: center;
+}
+.post>img{
+    border-radius: 0.4rem;
+    width: 100%;
+    max-height: 25rem;
+  object-fit: contain;
+  background-color: #333;
+}
+.post-user-description{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+    width: 95%;
+}
+.user-name-description{
+    
+    color: var(--logoTextColorPrimary);
+    text-shadow: 0.5px 0.5px 0.5px #333;
+    font-size: 1.7rem;
+    text-align: center;
+}
+.user-name-description:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.post-name-description{
+    text-align: center;
+    color: #333;
+    font-size: 1.4rem;
+
+}
+.actions{
+    display: flex;
+    justify-content:flex-start;
+    gap: 2rem;
+   
+}
+
+.like-action, .comment-action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    width: 4rem;
+  
+}
+.like-action>i, .comment-action>i{
+    font-size: 2rem;
+    cursor: pointer;
+}
+.like-action>span, .comment-action>span{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: green;
+}

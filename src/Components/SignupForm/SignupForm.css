@@ -1,0 +1,136 @@
+.signup-component{
+  display: grid;
+  place-items: center;
+  gap: 0.6rem;
+}
+.signup-form{
+  border: 1px solid #333;
+ height: 33rem;
+ width: 25rem;
+ display: grid;
+ place-items: center;
+ font-family: 'Bree Serif', serif;
+ margin-right: 1rem;
+ 
+}
+.logo{
+  display: grid;
+}
+.logo div{
+  display: flex;
+  justify-content: center;
+}
+.logo-text{
+  font-size: 2.5rem;
+}
+.logo span{
+  text-align: center;
+  font-size: 1.4rem;
+  font-family: 'Handlee', cursive;
+  color: #484848;
+}
+
+.logo-text:nth-of-type(1){
+  font-family: 'Handlee', cursive;
+  color: var(--logoTextColorPrimary);
+}
+.logo-text:nth-of-type(2){
+  font-family: 'Handlee', cursive;
+  color: #333;
+}
+.email-input,.password-input,.signup-button, .name-input, .username-input{
+width: 80%;
+}
+.inputs{
+  width: 100%;
+  display: grid;
+  place-items: center;
+  gap: 0.5rem;
+
+}
+.email-input input, .password-input input, .name-input input, .username-input input{
+width: 95%;
+height: 2rem;
+font-size: 1.1rem;
+outline: none;
+border-radius: .1rem;
+border:1px solid #333;
+font-family: 'Bree Serif', serif;
+padding: 0.4rem;
+}
+.gender-input{
+  margin: 1rem 10.6rem 0 0;
+  display: flex;
+  gap: 1rem;
+
+}
+.gender-input div{
+  display: flex;
+  align-items: center;
+}
+.gender-input div label{
+  font-size: 1.1rem;
+}
+
+.gender-input div input{
+  cursor: pointer;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.signup-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+}
+.signup-button button{
+  font-family: 'Bree Serif', serif;
+width: 100%;
+padding: 1rem 0.3rem 1rem 0.3rem;
+font-size: 1.1rem;
+background-color: var(--logoTextColorPrimary);
+color: whitesmoke;
+border-radius: .4rem;
+border: none;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.signup-button button:hover{
+  background-color: transparent;
+  border: 1px solid var(--logoTextColorPrimary);
+  color: var(--logoTextColorPrimary);
+}
+
+.redirect-to-login{
+  border: 1px solid #333;
+  margin-right: 1rem;
+  height: 5rem;
+  width: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bree Serif', serif;
+  gap: 0.2rem;
+}
+.redirect-to-login span{
+  font-size: 1.2rem;
+  text-align: center;
+}
+.redirect-to-login span:nth-of-type(2){
+  color: var(--logoTextColorPrimary);
+  cursor: pointer;
+}
+@media screen and (max-width:499px) {
+  .signup-form{
+   width: 80vw;
+  }
+  .logo span{
+   text-align: center;
+  }
+  .redirect-to-login{
+    border: 1px solid #333;
+    height: 5rem;
+    width: 80vw;
+   
+  }
+}
