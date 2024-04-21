@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import './ProfileModal.css';
-import selfieImage from '../../Images/selfie.jpg'
+import selfieImage from '../../Images/selfie.jpg';
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 const ProfileModal = ({setShowProfileModal}) => {
   const openLogoutModelHandler = ()=>{
     setShowProfileModal(false)
     document.getElementsByClassName('logout-modal')[0].style.display = 'grid'
   }
+  const showEditModalHandler = ()=>{
+    setShowEditAccount(true)
+  }
+  const[showEditAccount,setShowEditAccount] = useState(false);
+
   return <div className="profile-modal">
-  
+  {showEditAccount && <EditProfileModal setShowEditAccount={setShowEditAccount}/>}
 <div className="profile-modal-container">
 <i onClick={()=>setShowProfileModal(false)} class="ri-close-large-line"></i>
 <div className="profile-modal-container-image-actions">
@@ -16,7 +22,7 @@ const ProfileModal = ({setShowProfileModal}) => {
   <img src={selfieImage} alt="" />
   <p>Hi, I am Nikhil. I like builing cool stuff, playing chess and enjoy travelling new places. Send me a chat.</p>
   <div className="delete-update-actions">
-    <button>Edit Account</button>
+    <button onClick={showEditModalHandler}>Edit Account</button>
     <button onClick={()=>{
       setShowProfileModal(false)
       document.getElementsByClassName('delete-account-modal')[0].style.display = "grid"

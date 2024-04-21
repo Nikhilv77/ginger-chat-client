@@ -13,7 +13,7 @@ const Post = ({ post }) => {
 
   const[showComments,setShowComments] = useState(false)
   const user = useSelector(state => state.AuthReducer.authData.savedUser);
-  const [receivedLikes, setReceivedLikes] = useState(null);
+  const [likes, setLikes] = useState(null);
   const [liked, setLiked] = useState(post.likes.includes(user._id));
   const[commentsLength,setCommentsLength] = useState(post.comments.length);
   const[showothersProfileModal,setShowOthersProfileModal] = useState(false);
@@ -21,7 +21,7 @@ const Post = ({ post }) => {
 async function fetchLikesFn(){
 try {
   const response = await fetchLikes(post._id);
-   setReceivedLikes(response.data.length);
+   setLikes(response.data.length);
 } catch (error) {
   console.log(error);
 }
@@ -29,11 +29,26 @@ try {
 fetchLikesFn();
   },[post._id])
   useEffect(() => {
-    socket.on(`receiving-likings-${post._id}`, (likings) => {
-      console.log(likings);
-      setReceivedLikes(likings);
+    socket.on(`notifying-likings-${post._id}`, () => {
+      async function fetchLikesFn(){
+        try {
+          const response = await fetchLikes(post._id);
+           setLikes(response.data.length);
+           console.log(response.data.length);
+
+        } catch (error) {
+          console.log(error);
+        }
+        }
+        fetchLikesFn();
     });
-  }, []); 
+  }, [post._id]); 
+  useEffect(()=>{
+socket.on(`receiving-liked-${post._id}`,(data)=>{
+  console.log(data);
+  setLiked(data)
+})
+  },[post._id])
 useEffect(()=>{
   async function getComments (){
     const response = await fetchComments(post._id);
@@ -49,12 +64,10 @@ useEffect(()=>{
   const handleLike = async () => {
     try {
       setLiked(true);
-      const updatedLikes = receivedLikes + 1;
-
-      socket.emit('sending-likings', {postId:post._id,updatedLikes:updatedLikes});
-      setReceivedLikes(updatedLikes);
+      setLikes(prev=>prev+1)
       const {data} =await likePost({ userId: user._id }, post._id);
-      setReceivedLikes(data.length)
+      socket.emit('sending-likings', {postId:post._id});
+      setLikes(data.length)
     } catch (error) {
       console.log(error);
       setLiked(false);
@@ -64,11 +77,14 @@ useEffect(()=>{
   const handleDislike = async () => {
     try {
       setLiked(false);
-      const updatedLikes = receivedLikes - 1;
-      socket.emit('sending-likings', {postId:post._id,updatedLikes:updatedLikes});
-      setReceivedLikes(updatedLikes);
+      setLikes(prev=>{
+        if(prev!==0){
+          return prev-1;
+        }
+      })
       const {data} = await dislikePost({ userId: user._id }, post._id);
-      setReceivedLikes(data.length)
+      socket.emit('sending-likings', {postId:post._id});
+      setLikes(data.length)
     } catch (error) {
       console.log(error);
       setLiked(true);
@@ -90,7 +106,7 @@ useEffect(()=>{
         <div className="like-action">
           {liked ? <i onClick={handleDislike} className="ri-heart-fill" /> : <i onClick={handleLike} className="ri-heart-line" />}
 
-          <span>{receivedLikes}</span>
+          <span>{likes}</span>
         </div>
         <div className="comment-action">
           <i onClick={()=>setShowComments(true)} className="ri-discuss-line"></i>
