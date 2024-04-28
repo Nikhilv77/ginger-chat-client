@@ -120,7 +120,7 @@ useEffect(()=>{
             }
           }
           } className="post-user-description-name-image">
-        <img src={thisUser?.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + thisUser?.profilePicture} alt="" />
+        <img src={thisUser?.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER+thisUser?.profilePicture} alt="" />
         <span  className="user-name-description"><b>{post.userName} </b></span>
         </div>
         <br />
