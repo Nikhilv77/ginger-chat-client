@@ -36,5 +36,9 @@ gap: 1rem;
     .login-container{
     width: 85vw;
     }
-   
+    .login{
+      display: grid;
+     align-items: start;
+        height: 100vh;
+      }
 }
