@@ -38,5 +38,7 @@
         .signup-container{
         width: 85vw;
         }
-       
+        .signup{
+         height: 49rem;
+          }
     }

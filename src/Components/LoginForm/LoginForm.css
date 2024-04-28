@@ -182,6 +182,7 @@ color: #333;
     @media  screen and (max-width:440px) {
       .login-component{
         width: 95%;
+  
       }
       }
       @media  screen and (max-width:400px) {
