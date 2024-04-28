@@ -152,7 +152,11 @@
   .comment-modal{
     width: 85vw;
   }
-
+  .no-comments{
+    font-size: 1.3rem;
+    width: 80%;
+    text-align: center;
+  }
 }
 @media screen and (max-width:400px){
   .comment-modal{
