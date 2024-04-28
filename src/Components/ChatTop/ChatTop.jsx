@@ -107,6 +107,7 @@ useEffect(() => {
   borderColor='#383838'
   borderRadius={8}
   height={60}
+  
     value={newMessage}
     onChange={setNewMessage}
     cleanOnEnter
