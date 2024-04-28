@@ -1,9 +1,7 @@
 .conversation-top{
   background-color: #333;
-  margin: 0.5rem;
-  border-radius: 0.3rem;
   border-bottom: 1px solid #888;
-  /* box-shadow: 0.1px 0.1px 3px #888888; */
+  /* width: 100%; */
 }
 .conversation-top:hover{
 background-color: #6A0DAD;
@@ -36,9 +34,15 @@ font-size: 1.15rem;
 padding: 0;
   margin: 0;
 }
-.conversation-information>span{
+.user-is-friend{
   font-size: 1.05rem;
-  color: green;
+  color: var(--logoTextColorPrimary);
+  padding: 0;
+  margin: 0;
+}
+.user-is-stranger{
+  font-size: 1.05rem;
+  color: red;
   padding: 0;
   margin: 0;
 }

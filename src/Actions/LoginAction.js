@@ -1,5 +1,5 @@
 import * as LoginAPIs from '../Api/LoginAPI';
-export const loginAction = (loginData)=>async(dispatch)=>{
+export const loginAction = (loginData,setAuthError)=>async(dispatch)=>{
   dispatch({type:'AUTH_REQUEST'});
   try {
     const response = await LoginAPIs.LoginAPI(loginData);
@@ -7,6 +7,7 @@ export const loginAction = (loginData)=>async(dispatch)=>{
   } catch (error) {
     console.log(error);
     dispatch({type:'AUTH_FAILED',payload:error});
+    setAuthError(error.response.data.message)
   }
 }
 

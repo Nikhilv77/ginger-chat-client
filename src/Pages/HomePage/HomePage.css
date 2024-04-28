@@ -26,3 +26,44 @@
   box-shadow: 0 1px 4px rgba(0,0,0,0.5);
   background-color: #f0f2f5;
 }
+.find-friends-backdrop, .friend-requests-backdrop{
+  position: fixed;
+  z-index: 1002;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+  backdrop-filter: blur(10px) brightness(90%);
+}
+@media screen and (max-width:1350px) {
+  .home{
+    grid-template-columns: 17rem auto 17rem;
+  }
+}
+@media screen and (max-width:1300px) {
+ 
+  .home{
+    grid-template-columns: 14rem auto 14rem;
+  }
+}
+@media screen and (max-width:1200px) {
+  .home{
+    grid-template-columns: 11rem auto 11rem;
+  }
+}
+@media screen and (max-width:1000px) {
+  .left-home-side, .right-home-side{
+    display: none;
+  }
+  .home{
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width:400px){
+  .middle-home-side{
+    overflow-x: hidden;
+  }
+}

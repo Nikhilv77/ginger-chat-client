@@ -9,6 +9,7 @@ const DeleteAccountModal = () => {
   const navigate = useNavigate();
   const closeModalHandler = ()=>{
     document.getElementsByClassName('delete-account-modal')[0].style.display = "none"
+    document.getElementsByClassName('delete-account-backdrop')[0].style.display = "none"
   }
   const deleteAccountHandler = ()=>{
     try{

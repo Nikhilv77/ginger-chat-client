@@ -8,6 +8,7 @@ const LogoutModel = () => {
   const navigate = useNavigate();
   const closeModalHandler = ()=>{
     document.getElementsByClassName('logout-modal')[0].style.display = "none"
+    document.getElementsByClassName('logout-backdrop')[0].style.display = "none"
   }
   const logoutHandler = ()=>{
     try{

@@ -6,12 +6,13 @@ import { getUserPosts } from "../../Api/PostAPI";
 import ClipLoader from "react-spinners/ClipLoader";
 import { socket } from "../../App";
 import { deletePost } from "../../Api/PostAPI";
-const MyPostsModal = ({setShowMyPosts}) => {
+const MyPostsModal = ({setShowMyPosts,setShowProfileModal}) => {
   const user = useSelector(state=>state.AuthReducer.authData.savedUser)
   let[userPosts,setUserPosts] = useState([])
-  
+  const[loading,setLoading] = useState(null)
   useEffect(()=>{
     async function getUserPostsFn(){
+      setLoading(true)
       try {
         const response = await getUserPosts(user._id);
         console.log(response.data);
@@ -19,6 +20,7 @@ const MyPostsModal = ({setShowMyPosts}) => {
       } catch (error) {
         console.log(error);
       }
+      setLoading(false)
     }
     getUserPostsFn();
   },[])
@@ -38,12 +40,17 @@ socket.emit('delete-Post',postId)
       <h2>My Posts</h2>
     <i onClick={()=>setShowMyPosts(false)} className="ri-close-large-line"></i>
      <div className="my-posts">
+     {loading === false && userPosts.length===0 &&
+     <div className="no-user-posts">
+      <i class="ri-slideshow-line"></i>
+      <span>You haven't made any post </span>
+      </div>}
    {userPosts?userPosts.map((post,index)=>{
-    return <MyPost handleDeletePost={handleDeletePost} key={index} post = {post}/>
+    return <MyPost setShowProfileModal = {setShowProfileModal} handleDeletePost={handleDeletePost} key={index} post = {post}/>
    }):  <ClipLoader
    className="my-post-loader"
-   size={70}
-   color="white"
+   size={20}
+   color="#333"
    aria-label="Loading Spinner"
    data-testid="loader"
  />}

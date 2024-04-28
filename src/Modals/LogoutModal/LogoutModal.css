@@ -10,7 +10,7 @@
   left: 50%;
   transform: translate(-50%,-50%);
   /* transition: 0.5s ease-in-out; */
-  z-index: 1001;
+  z-index: 1003;
   display: none;
 }
 .ri-close-large-line{
@@ -46,6 +46,7 @@ gap: 2rem;
 .logout-container>h2{
   color: #f0f2f5;
   font-size: 1.6rem;
+  text-align: center;
 }
 .logout-btn{
   display: flex;
@@ -75,4 +76,39 @@ gap: 2rem;
   background-color: var(--logoTextColorPrimary);
   color: #fff;
   /* text-shadow: 0.5px 0.5px 0.5px #333; */
+}
+@media screen and (max-width:1100px){
+  .logout-modal{
+    height: 68vh;
+    width: 50vw;
+  }
+  .logout-container>h2{
+    font-size: 1.4rem;
+  }
+  .logout-container>span{
+    font-size: 1.2rem;
+  }
+  .logout-btn>button{
+    padding: 0.6rem 1.2rem 0.6rem 1.2rem;
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width:700px){
+  .logout-modal{
+    height: 68vh;
+    width: 60vw;
+  }
+  .logout-container>h2{
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width:500px){
+  .logout-modal{
+    width: 80vw;
+  }
+}
+@media screen and (max-width:420px){
+  .logout-modal{
+    width: 85vw;
+  }
 }

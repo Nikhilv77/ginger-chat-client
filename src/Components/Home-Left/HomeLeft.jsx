@@ -2,17 +2,14 @@ import React from "react";
 import './HomeLeft.css'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import AllMembersModal from "../../Modals/AllMembersModal/AllMembersModal";
 import FriendRequestsModal from "../../Modals/FriendRequestsModal/FriendRequestsModal";
 
-const HomeLeft = () => {
-  const [showMembersModal,setShowMembersModal]=useState(false)
-  const[showFriendRequestsModal,setFriendRequestsModal] = useState(false)
+const HomeLeft = ({setShowMembersModal,setFriendRequestsModal}) => {
+
   const navigate=useNavigate()
 
   return<> 
-  {showMembersModal && <AllMembersModal setShowMembersModal={setShowMembersModal}/>}
-  {showFriendRequestsModal && <FriendRequestsModal setFriendRequestsModal={setFriendRequestsModal}/>}
+
   <div className="home-left">
     <div className="home-left-items">
 

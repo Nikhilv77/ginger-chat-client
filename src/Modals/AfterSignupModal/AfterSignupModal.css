@@ -1,4 +1,4 @@
-.edit-profile-modal{
+.after-signup-modal{
   height: 95vh;
   width: 50vw;
   background-color: var(--logoTextColorPrimary);
@@ -11,7 +11,7 @@
   left: 50%;
   transform: translate(-50%,-50%);
   transition: 0.5s ease-in-out;
-  z-index: 1003;
+  z-index: 1004;
 }
 .ri-close-large-line{
   position: absolute;
@@ -22,7 +22,7 @@
   filter: drop-shadow(2px 2px 2px rgb(0,0,0));
   cursor: pointer;
 }
-.edit-profile-modal-container{
+.after-signup-modal-container{
   background-color: #333;
   width: 95%;
   height: 95%;
@@ -36,12 +36,13 @@
   padding: 2rem;
   overflow-y: scroll;
 }
-.edit-profile-modal-container>h2{
+.after-signup-modal-container>h2{
   font-size: 2rem;
   color: var(--logoTextColorPrimary);
   font-weight: 500;
+  text-align: center;
 }
-.edit-profile-modal-items{
+.after-signup-modal-items{
   display: flex;
   flex-direction: column;
   justify-content: flex-start; 
@@ -51,14 +52,14 @@
   width: 80%;
   overflow-y: scroll;
 }
-.edit-profile-modal-image{
+.after-signup-modal-image{
   display: grid;
   place-items: center;
   position: relative;
   width: 100%;
   padding-right: 0.6rem;
 }
-.edit-profile-modal-image>img{
+.after-signup-modal-image>img{
   height: 14rem;
   width: 100%;
   border-radius: 0.2rem;
@@ -66,13 +67,13 @@
   object-fit: contain;
   background-color: #000;
 }
-.edit-profile-modal-image>i{
+.after-signup-modal-image>i{
   font-size: 1.7rem;
   color: var(--logoTextColorPrimary);
   cursor: pointer;
   justify-self: end;
 }
-.edit-profile-modal-form{
+.after-signup-modal-form{
 width: 100%;
 display: grid;
 justify-items: start;
@@ -85,15 +86,6 @@ padding-right: 0.6rem;
   display: grid;
   align-items: center;
   gap: 0.3rem;
-}
-.edit-user-name-input{
-  position: relative;
-}
-.edit-user-name-input>i{
-  position: absolute;
- top: 63%;
- left: 94%;
- transform: translate(-50%,-50%);
 }
 .edit-name-input>label, .edit-user-name-input>label, .edit-lives-in>label, .edit-about>label{
   font-size: 1.2rem;
@@ -125,7 +117,7 @@ font-family: var(--font-family);
 resize: none;
 font-weight: 600;
 }
-.edit-profile-modal-form>button{
+.after-signup-modal-form>button{
 border-radius: 0.4rem;
 padding: 0.8rem 1.3rem 0.8rem 1.3rem;
 border: none;
@@ -137,75 +129,69 @@ color: var(--black);
 cursor: pointer;
 font-weight: 600;
 }
-.edit-profile-modal-form>span{
+.after-signup-modal-form>span{
   color: var(--logoTextColorPrimary);
   font-size: 1rem;
 justify-self: end;
 }
-.update-button-edit-disabled{
+.signin-button-disabled{
   background-color: #787878 !important;
 }
-.profile-updated-span{
-  color: #32cd32 !important;
-  font-size: 1.4rem;
-}
 @media screen and (max-width:1200px){
-  .edit-profile-modal{
-    height: 95vh;
-    width: 60vw;
-   
+  .after-signup-modal{
+    width: 50vw;
   }
-  .edit-profile-modal-container{
-   padding: 2rem 0.5rem 2rem 0.5rem;
+  .after-signup-modal-items{
+    width: 85%;
   }
-  .edit-profile-modal-items{
-    height: 90%;
-    width: 90%;
-
+  .after-signup-modal-container>h2{
+    font-size: 1.8rem;
   }
 }
 @media screen and (max-width:1000px){
-  .edit-profile-modal{
-    height: 95vh;
+  .after-signup-modal{
+    width: 60vw;
+  }
+  .after-signup-modal-items{
+    width: 90%;
+  }
+  .after-signup-modal-container>h2{
+    font-size: 1.7rem;
+    color: var(--logoTextColorPrimary);
+    font-weight: 500;
+  }
+}
+@media screen and (max-width:850px){
+  .after-signup-modal{
     width: 70vw;
-   
   }
+
 }
-@media screen and (max-width:900px){
-  .edit-profile-modal{
-    height: 95vh;
+@media screen and (max-width:650px){
+  .after-signup-modal{
     width: 80vw;
-   
-  }
-  .edit-profile-modal-items{
- 
-    height: 90%;
-    width: 95%;
-  
   }
 }
-@media screen and (max-width:900px){
-  .edit-profile-modal{
-    height: 95vh;
-    width: 90vw;
-   
+@media screen and (max-width:500px){
+  .after-signup-modal{
+    width: 85vw;
   }
-  .edit-profile-modal-container>h2{
-    font-size: 1.7rem;
+  .after-signup-modal-items{
+    width: 98%;
   }
+  .after-signup-modal-container{
+    padding: 1rem;
+  }
+  .after-signup-modal-container>h2{
+    font-size: 1.5rem;
+    color: var(--logoTextColorPrimary);
+    font-weight: 500;
+  }
+
 }
-@media screen and (max-width:450px){
-  .edit-profile-modal{
-    height: 95vh;
+@media screen and (max-width:400px){
+  .after-signup-modal{
     width: 92vw;
-   
   }
-  .edit-profile-modal-container>h2{
-    font-size: 1.7rem;
-  }
-.edit-profile-modal-container>i{
-  font-size: 2rem;
-  top: 1%;
-  right: 1%;
-}
+
 }

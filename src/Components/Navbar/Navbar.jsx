@@ -4,7 +4,10 @@ import gchatLogo from '../../Images/gc-logo.png'
 import { useNavigate } from "react-router-dom";
 import MyPostsModal from "../../Modals/MyPostsModal/MyPostsModal";
 import ProfileModal from "../../Modals/ProfileModal/ProfileModal";
-import FriendsModal from '../../Modals/FriendsModal/FriendsModal'
+import FriendsModal from '../../Modals/FriendsModal/FriendsModal';
+import AllMembersModal from '../../Modals/AllMembersModal/AllMembersModal';
+import FriendRequestsModal from '../../Modals/FriendRequestsModal/FriendRequestsModal';
+import EditProfileModal from '../../Modals/EditProfileModal/EditProfileModal'
 
 
 
@@ -12,6 +15,10 @@ const Navbar = () => {
   const[showMyPosts,setShowMyPosts] = useState(false)
   const[showProfileModal,setShowProfileModal] = useState(false)
   const[friendsModal,setFriendsModal] = useState(false)
+  const [showMembersModal,setShowMembersModal]=useState(false)
+  const[showFriendRequestsModal,setFriendRequestsModal] = useState(false)
+  const[showEditAccount,setShowEditAccount] = useState(false);
+  const[thisUser,setThisUser] = useState(null)
   const navigate = useNavigate();
   const handleNavbarShow = () => {
     document.getElementsByClassName('slider-modal')[0].style.top = 0;
@@ -28,10 +35,7 @@ const Navbar = () => {
     document.getElementsByClassName('profile-modal')[0].style.left = '50%'
   }
 
-  const opendeleteAccountModalHandler = ()=>{
-    handleCloseNavbar();
-    document.getElementsByClassName('delete-account-modal')[0].style.display = '50%'
-  }
+
   const openfriendsModalHandler = ()=>{
     handleCloseNavbar();
     document.getElementsByClassName('friends-modal')[0].style.left = '50%'
@@ -40,10 +44,31 @@ const Navbar = () => {
     handleCloseNavbar();
     document.getElementsByClassName('friend-requests-modal')[0].style.left = '50%'
   }
+  const opendeleteAccountModalHandler = ()=>{
+    document.getElementsByClassName('delete-account-modal')[0].style.display = 'grid'
+    document.getElementsByClassName('delete-account-backdrop')[0].style.display = "inline"
+  }
+  const openLogoutModelHandler = ()=>{
+    document.getElementsByClassName('logout-modal')[0].style.display = 'grid'
+    document.getElementsByClassName('logout-backdrop')[0].style.display = 'inline'
+    
+  }
+  const setProfileUser = (aUser)=>{
+    console.log(aUser,'logged');
+    setThisUser(aUser)
+  }
   return<> 
-  {showMyPosts && <MyPostsModal setShowMyPosts={setShowMyPosts}/>}
-  {showProfileModal && <ProfileModal setShowProfileModal={setShowProfileModal}/>}
+  {showMyPosts && <MyPostsModal setShowProfileModal={setShowProfileModal} setShowMyPosts={setShowMyPosts}/>}
+  {showProfileModal && <ProfileModal setProfileUser = {setProfileUser} setFriendsModal = {setFriendsModal} setFriendRequestsModal = {setFriendRequestsModal} showProfileModal = {showProfileModal} setShowEditAccount = {setShowEditAccount} setShowProfileModal={setShowProfileModal}/>}
   {friendsModal && <FriendsModal setFriendsModal={setFriendsModal}/>}
+  {showMembersModal && <AllMembersModal setShowMembersModal={setShowMembersModal}/>}
+  {showFriendRequestsModal && <FriendRequestsModal setFriendRequestsModal={setFriendRequestsModal}/>}
+  {thisUser && showEditAccount && <EditProfileModal thisUser = {thisUser}  setShowEditAccount={setShowEditAccount}/>}
+ {showEditAccount &&  <div onClick={()=>setShowEditAccount(false)} className="edit-account-backdrop"></div>}
+ {friendsModal && <div onClick={()=>setFriendsModal(false)} className="friends-modal-backdrop"></div>}
+ {showMyPosts && <div onClick={()=>setShowMyPosts(false)} className="my-posts-backdrop"></div>}
+ {showMembersModal && <div onClick={()=>setShowMembersModal(false)} className="find-friends-backdrop"></div>}
+{showFriendRequestsModal && <div onClick={()=>setFriendRequestsModal(false)} className="friend-requests-backdrop"></div>}
   <div className="navbar">
    <img src={gchatLogo} alt="" />
    <i onClick={handleNavbarShow} class="ri-menu-line"></i> 
@@ -67,35 +92,55 @@ const Navbar = () => {
   </div>
   
   <div className="item">
-  <i onClick={openAllMembersModalHandler} class="ri-group-fill"></i>
-    <p>All Members</p>
+  <i onClick={()=>{
+  setShowMembersModal(true)
+  handleCloseNavbar();
+  }} class="ri-group-fill"></i>
+    <p>Find Friends</p>
   </div>
   <div className="item">
-  <i onClick={openProfileModalHandler} class="ri-id-card-fill"></i>
-    <p>My Profile</p>
+  <i onClick={()=>{setShowProfileModal(true)
+  handleCloseNavbar();
+  }} class="ri-id-card-fill"></i>
+    <p>Profile</p>
   </div>
   <div className="item">
-  <i onClick={()=>setShowMyPosts(true)} class="ri-gallery-line"></i>
+  <i onClick={()=>{setShowMyPosts(true)
+  handleCloseNavbar();
+  }} class="ri-gallery-line"></i>
     <p>My posts</p>
   </div>
   <div className="item">
-  <i onClick={()=>navigate('/chat')} class="ri-chat-heart-fill"></i>
+  <i onClick={()=>{
+        handleCloseNavbar();
+    navigate('/chat')}} class="ri-chat-heart-fill"></i>
     <p>My Chats</p>
   </div>
   <div className="item">
-  <i onClick={openfriendsModalHandler} class="ri-user-smile-fill"></i>
-    <p>My Friends</p>
+  <i onClick={()=>{setFriendsModal(true)
+  handleCloseNavbar();
+  }} class="ri-user-smile-fill"></i>
+    <p>Friends</p>
   </div>
   <div className="item">
-  <i onClick={openfriendRequestsModalHandler} class="ri-chat-new-line"></i>
+  <i onClick={()=>{setFriendRequestsModal(true)
+  handleCloseNavbar();
+  }} class="ri-chat-new-line"></i>
     <p>Friend Requests</p>
   </div>
   <div className="item">
-  <i class="ri-logout-box-r-fill"></i>
+  <i onClick={()=>{
+    openLogoutModelHandler()
+    handleCloseNavbar();
+  
+  }} class="ri-logout-box-r-fill"></i>
     <p>Logout</p>
   </div>
   <div className="item">
-  <i onClick = {opendeleteAccountModalHandler}class="ri-delete-bin-fill"></i>
+  <i onClick = {()=>{
+    opendeleteAccountModalHandler()
+    handleCloseNavbar();
+  }}class="ri-delete-bin-fill"></i>
     <p>Delete Account</p>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import img3 from '../../Images/selfie.jpeg'
+
 import Navbar from '../../Components/Navbar/Navbar'
 import './ChatPage.css'
 import { useSelector } from 'react-redux'
@@ -8,7 +8,6 @@ import { getUserChats } from '../../Api/ChatAPI'
 import ChatTop from '../../Components/ChatTop/ChatTop'
 import { useEffect, useState } from 'react'
 import { io } from 'socket.io-client'
-import socializing from '../../Images/chatting.png'
 import { socket } from '../../App'
 
 const ChatPage = () => {
@@ -18,6 +17,8 @@ const ChatPage = () => {
   const [sendMessage, setSendMessage] = useState()
   const [onlineUsers, setOnlineUsers] = useState([])
   const [receivedMessage, setReceivedMessage] = useState('')
+  const[showChatsModal,setShowChatsModal] = useState(false);
+  const[previousRender,setPreviousRender] = useState(false)
   useEffect(() => {
     socket.emit('add-user', user._id)
     socket.on('get-users', (users) => {
@@ -47,6 +48,22 @@ const ChatPage = () => {
   return (
     <div className="chatpage">
       <div className="chat-container">
+       {showChatsModal &&  <div onClick={()=>setShowChatsModal(false)} className="conversation-mobile-backdrop"></div>}
+      {showChatsModal && <div className="conversation-container-mobile">
+          {chatUsers.map((chat) => {
+            return (
+              <div
+                onClick={() => {
+                  setCurrentChat(chat)
+                  setShowChatsModal(false)
+                }}
+              >
+         
+                <Conversations previousRender = {previousRender} setPreviousRender = {setPreviousRender}  chat={chat} currentUserId={user._id} />
+              </div>
+            )
+          })}
+        </div>}
         <div className="conversation-container">
           {chatUsers.map((chat) => {
             return (
@@ -55,13 +72,7 @@ const ChatPage = () => {
                   setCurrentChat(chat)
                 }}
               >
-                <Conversations chat={chat} currentUserId={user._id} />
-                <Conversations chat={chat} currentUserId={user._id} />
-                <Conversations chat={chat} currentUserId={user._id} />
-                <Conversations chat={chat} currentUserId={user._id} />
-                <Conversations chat={chat} currentUserId={user._id} />
-                <Conversations chat={chat} currentUserId={user._id} />
-                <Conversations chat={chat} currentUserId={user._id} />
+                <Conversations previousRender = {previousRender} setPreviousRender = {setPreviousRender} chat={chat} currentUserId={user._id} />
               </div>
             )
           })}
@@ -69,13 +80,24 @@ const ChatPage = () => {
 
         {currentChat ? (
           <ChatTop
+           setPreviousRender = {setPreviousRender}
             currentChat={currentChat}
             currentUserId={user._id}
             setSendMessage={setSendMessage}
             receivedMessage={receivedMessage}
+            setShowChatsModal = {setShowChatsModal}
           />
         ) : (
-          <img className="chatting-image" src={socializing}></img>
+          <div className="no-chat">
+            <div className="no-chat-icons">
+            <i class="ri-chat-1-fill"></i>
+            <p>Select a chat to start messaging...</p>
+            <div onClick={()=>setShowChatsModal(true)} className="no-chat-show-chat">
+<i class="ri-chat-heart-fill"></i>
+<span>Chats</span>
+</div>
+            </div>
+          </div>
         )}
       </div>
     </div>

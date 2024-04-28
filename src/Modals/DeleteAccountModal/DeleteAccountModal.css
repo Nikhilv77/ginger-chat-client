@@ -2,7 +2,7 @@
   height: 68vh;
   width: 40vw;
   background-color: var(--logoTextColorPrimary);
-  border-radius: 1rem;
+  border-radius: 0.4rem;
   box-shadow: 2px 2px 5px rgb(0,0,0);
   position: fixed;
   place-items: center;
@@ -10,7 +10,7 @@
   left: 50%;
   transform: translate(-50%,-50%);
   /* transition: 0.5s ease-in-out; */
-  z-index: 1001;
+  z-index: 1003;
   display: none;
 }
 .ri-close-large-line{
@@ -81,4 +81,41 @@ gap: 2rem;
   background-color: var(--logoTextColorPrimary);
   color: #fff;
   /* text-shadow: 0.5px 0.5px 0.5px #333; */
+}
+@media screen and (max-width:1100px){
+  .delete-account-modal{
+    height: 68vh;
+    width: 50vw;
+  }
+  .delete-account-container>h2{
+    font-size: 1.4rem;
+  }
+  .delete-account-container>span{
+    font-size: 1.2rem;
+  }
+  .delete-account-btn>button{
+    padding: 0.6rem 1.2rem 0.6rem 1.2rem;
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width:700px){
+  .delete-account-modal{
+    height: 68vh;
+    width: 60vw;
+  }
+  .delete-account-container>h2{
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width:500px){
+  .delete-account-modal{
+    height: 72vh;
+    width: 80vw;
+  }
+}
+@media screen and (max-width:420px){
+  .delete-account-modal{
+    height: 72vh;
+    width: 85vw;
+  }
 }

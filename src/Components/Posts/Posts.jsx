@@ -6,10 +6,18 @@ import {useDispatch,useSelector} from 'react-redux'
 import { socket } from "../../App";
 import { fetchAllPosts } from "../../Api/PostAPI";
 import ClipLoader from "react-spinners/ClipLoader";
+import ProfileModal from "../../Modals/ProfileModal/ProfileModal";
+import FriendRequestsModal from "../../Modals/FriendRequestsModal/FriendRequestsModal";
+import EditProfileModal from "../../Modals/EditProfileModal/EditProfileModal";
+import FriendsModal from "../../Modals/FriendsModal/FriendsModal";
 const Posts = () => {
   const[receivedPost,setReceivedPost] = useState(null);
   let[AllPosts,setAllPosts] = useState([])
-  
+  const[showProfileModal,setShowProfileModal] = useState(false)
+  const[showFriendRequestsModal,setFriendRequestsModal] = useState(false)
+  const[thisUser,setThisUser] = useState(null)
+  const[showEditAccount,setShowEditAccount] = useState(false);
+  const[friendsModal,setFriendsModal] = useState(false)
   useEffect(()=>{
     async function fetAllPosts(){
       try {
@@ -47,11 +55,19 @@ socket.on('deleted-post',(postId)=>{
       setAllPosts(prevPosts => [receivedPost, ...prevPosts]);
     }
   }, [receivedPost]);
+  const setProfileUser = (aUser)=>{
+    console.log(aUser,'logged');
+    setThisUser(aUser)
+  }
 
   const user = useSelector(state=>state.AuthReducer.authData.savedUser)
   return <div className="posts">
+    {showFriendRequestsModal && <FriendRequestsModal setFriendRequestsModal={setFriendRequestsModal}/>}
+    {thisUser && showEditAccount && <EditProfileModal thisUser = {thisUser}  setShowEditAccount={setShowEditAccount}/>}
+    {showProfileModal && <ProfileModal setProfileUser = {setProfileUser} setFriendsModal = {setFriendsModal} setFriendRequestsModal = {setFriendRequestsModal} showProfileModal = {showProfileModal} setShowEditAccount = {setShowEditAccount} setShowProfileModal={setShowProfileModal}/>} 
+    {friendsModal && <FriendsModal setFriendsModal={setFriendsModal}/>}
    {AllPosts?AllPosts.map((post,index)=>{
-    return <Post post = {post}/>
+    return <Post setShowProfileModal = {setShowProfileModal} post = {post}/>
    }):  <ClipLoader
    className="post-loader"
    size={70}

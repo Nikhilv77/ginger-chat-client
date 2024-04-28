@@ -19,6 +19,27 @@ switch(action.type){
     loading:false,
     error:action.payload
   }
+  case 'UPDATE_CREATE_CHAT_REQUEST':return{
+    ...state,
+    loading : true,
+    error:null
+  }
+  case 'UPDATE_CREATE_CHAT_SUCCESSFUL':
+  return{
+    ...state,
+    loading:false,
+    authData: {
+      ...state.authData,
+      savedUser: action.payload
+    },
+    error:null,
+  }
+  case 'UPDATE_CREATE_CHAT_FAILED':
+  return{
+    ...state,
+    loading:false,
+    error:action.payload
+  }
   case 'SEND_FRIEND_REQUEST_REQUEST':return{
     ...state,
     requestLoading:true,

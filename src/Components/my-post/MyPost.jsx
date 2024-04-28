@@ -6,14 +6,18 @@ import { dislikePost } from "../../Api/PostAPI";
 import { socket } from "../../App";
 import { fetchComments,fetchLikes } from "../../Api/PostAPI";
 import CommentModal from "../../Modals/CommentsModal/CommentModal";
+import ProfileModal from "../../Modals/ProfileModal/ProfileModal";
+import { getUser } from "../../Api/UserAPI";
+import defaultPicture from '../../Images/default-picture.jpg'
 
-const MyPost = ({ post,handleDeletePost }) => {
+const MyPost = ({ post,handleDeletePost,setShowProfileModal }) => {
 
   const[showComments,setShowComments] = useState(false)
   const user = useSelector(state => state.AuthReducer.authData.savedUser);
   const [likes, setLikes] = useState(null);
   const [liked, setLiked] = useState(post.likes.includes(user._id));
   const[commentsLength,setCommentsLength] = useState(post.comments.length);
+  const[thisUser,setThisUser] = useState(null);
   useEffect(()=>{
 async function fetchLikesFn(){
 try {
@@ -23,7 +27,16 @@ try {
   console.log(error);
 }
 }
+async function getThisUser(){
+  try {
+    const response = await getUser(post.userId)
+    setThisUser(response.data)
+  } catch (error) {
+    console.log(error);
+  }
+}
 fetchLikesFn();
+getThisUser();
   },[post._id])
   useEffect(() => {
     socket.on(`notifying-likings-${post._id}`, () => {
@@ -84,10 +97,13 @@ const handleDelete = ()=>{
 }
   return (
     <div className="my-post">
-      {showComments && <CommentModal setShowComments={setShowComments} setCommentsLength = {setCommentsLength} postId={post._id} userName = {user.name}/>}
+      {showComments && <CommentModal setShowComments={setShowComments} setCommentsLength = {setCommentsLength} postId={post._id} userName = {user.name} userId = {user._id}/>}
       <img src={post.image ? process.env.REACT_APP_PUBLIC_FOLDER + post.image : ""} alt="" />
       <div className="my-post-user-description">
-        <span className="my-user-name-description"><b>{post.userName} </b></span>
+      <div onClick={()=>setShowProfileModal(true)} className="mypost-user-description-name-image">
+        <img src={thisUser?.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + thisUser?.profilePicture} alt="" />
+        <span  className="user-name-description"><b>{post.userName} </b></span>
+        </div>
         <br />
         <span className="my-post-name-description">{post.description}</span>
       </div>

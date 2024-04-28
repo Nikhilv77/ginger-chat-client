@@ -1,12 +1,14 @@
 import React from "react";
-import SignupVideo from "../../Components/SignupVideo/SignupVideo";
+import LoginImage from "../../Components/LoginImage/LoginImage";
 import SignupForm from '../../Components/SignupForm/SignupForm'
 import './Signup.css'
 
 const Signup = () => {
   return <div className ="signup">
     <div className="signup-container">
-   <SignupVideo/>
+      <div className="signup-image-for-signup">
+   <LoginImage/>
+   </div>
  <SignupForm/>
   </div>
   </div>;

@@ -22,10 +22,22 @@
     align-self: center;
     width: 95%;
 }
+.post-user-description-name-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+.post-user-description-name-image>img{
+    border-radius: 50%;
+    height: 3.5rem;
+    width: 3.5rem;
+    cursor: pointer;
+}
 .user-name-description{
     
     color: var(--logoTextColorPrimary);
-    text-shadow: 0.5px 0.5px 0.5px #333;
+    text-shadow: 0.5px 0.5px 0.5px #787878;
     font-size: 1.7rem;
     text-align: center;
 }
@@ -54,6 +66,7 @@
     width: 4rem;
   
 }
+
 .like-action>i, .comment-action>i{
     font-size: 2rem;
     cursor: pointer;
@@ -61,5 +74,59 @@
 .like-action>span, .comment-action>span{
     font-size: 1.2rem;
     font-weight: 600;
-    color: green;
+    color: var(--logoTextColorPrimary);
+}
+.others-profile-modal-backdrop, .comment-modal-backdrop{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1002;
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px) brightness(90%);
+}
+@media screen and (max-width:600px) {
+    .user-name-description{
+        font-size: 1.6rem;
+    }
+    .post-name-description{
+        font-size: 1.3rem;
+    }
+    .like-action>i, .comment-action>i{
+        font-size: 1.8rem;
+    }
+    .like-action>span, .comment-action>span{
+        font-size: 1.1rem;
+    }
+    .post>img{
+        max-height: 19rem;
+    }
+    .post-user-description-name-image>img{
+        height: 3rem;
+        width: 3rem;
+    }
+}
+@media screen and (max-width:400px){
+    .post{
+       width: 99%;
+       margin: auto;
+    }
+    .user-name-description{
+        font-size: 1.5rem;
+    }
+    .post-name-description{
+        font-size: 1.3rem;
+    }
+    .like-action>i, .comment-action>i{
+        font-size: 1.8rem;
+    }
+    .like-action>span, .comment-action>span{
+        font-size: 1.1rem;
+    }
+    .post>img{
+        max-height: 17rem;
+    }
 }

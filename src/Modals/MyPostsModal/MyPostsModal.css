@@ -11,7 +11,7 @@
   left: 50%;
   transform: translate(-50%,-50%);
   transition: 0.5s ease-in-out;
-  z-index: 1001;
+  z-index: 1003;
 }
 .my-posts-modal-container{
   height: 92%;
@@ -53,4 +53,70 @@
   display: grid;
   place-items: center;
   gap: 1rem;
+}
+.no-user-posts{
+  display: grid;
+  place-items: center;
+}
+.no-user-posts>i{
+  color: #f0f2f5;
+  font-size: 6rem;
+}
+.no-user-posts>span{
+  color: #f0f2f5;
+  font-size: 1.7rem;
+  text-align: center;
+}
+@media screen and (max-width:1200px){
+  .my-posts-modal{
+    width: 60vw;
+  }
+  .my-posts-modal-container>h2{
+    font-size: 2rem;
+  }
+  .my-posts{
+    width: 95%;
+  }
+  
+}
+@media screen and (max-width:1000px){
+  .my-posts-modal{
+    width: 65vw;
+  }
+  .my-posts-modal-container>h2{
+    font-size: 1.9rem;
+  }
+
+}
+@media screen and (max-width:850px){
+  .my-posts-modal{
+    width: 70vw;
+  }
+  .my-posts{
+    width: 97%;
+  }
+}
+@media screen and (max-width:650px){
+  .my-posts-modal{
+    width: 90vw;
+  }
+}
+@media screen and (max-width:500px){
+  .my-posts-modal{
+    width: 94vw;
+  }
+  .no-user-posts>i{
+    color: #f0f2f5;
+    font-size: 4.3rem;
+  }
+  .no-user-posts>span{
+    font-size: 1.4rem;
+  }
+
+}
+@media screen and (max-width:400px){
+  .my-posts-modal{
+    width: 97vw;
+  }
+
 }

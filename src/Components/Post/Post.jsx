@@ -7,26 +7,38 @@ import { socket } from "../../App";
 import { fetchComments,fetchLikes } from "../../Api/PostAPI";
 import CommentModal from "../../Modals/CommentsModal/CommentModal";
 import OthersProfileModal from "../../Modals/OtherProfileModal/OtherProfileModal";
+import { getUser } from "../../Api/UserAPI";
+import defaultPicture from "../../Images/default-picture.jpg"
 
 
-const Post = ({ post }) => {
-
+const Post = ({ post,setShowProfileModal }) => {
   const[showComments,setShowComments] = useState(false)
   const user = useSelector(state => state.AuthReducer.authData.savedUser);
   const [likes, setLikes] = useState(null);
   const [liked, setLiked] = useState(post.likes.includes(user._id));
   const[commentsLength,setCommentsLength] = useState(post.comments.length);
   const[showothersProfileModal,setShowOthersProfileModal] = useState(false);
+  const[thisUser,setThisUser] = useState(null);
   useEffect(()=>{
 async function fetchLikesFn(){
 try {
   const response = await fetchLikes(post._id);
    setLikes(response.data.length);
+
 } catch (error) {
   console.log(error);
 }
 }
+async function getThisUser(){
+  try {
+    const response = await getUser(post.userId)
+    setThisUser(response.data)
+  } catch (error) {
+    console.log(error);
+  }
+}
 fetchLikesFn();
+getThisUser();
   },[post._id])
   useEffect(() => {
     socket.on(`notifying-likings-${post._id}`, () => {
@@ -57,10 +69,10 @@ useEffect(()=>{
   getComments();
 },[post._id])
 useEffect(()=>{
-  socket.on("receiving-new-comment",(newComment)=>{
+  socket.on(`receiving-new-comment${post._id}`,(newComment)=>{
    setCommentsLength(prev=>prev+1)
   })
-  },[])
+  },[post._id])
   const handleLike = async () => {
     try {
       setLiked(true);
@@ -89,15 +101,28 @@ useEffect(()=>{
       console.log(error);
       setLiked(true);
     }
-  };
+  }; 
 
   return (
     <div className="post">
-      {showComments && <CommentModal setShowComments={setShowComments} setCommentsLength = {setCommentsLength} postId={post._id} userName = {user.name}/>}
+      { showComments && <div onClick={()=>setShowComments(false)} className="comment-modal-backdrop"></div>}
+    { showothersProfileModal && <div onClick={()=>setShowOthersProfileModal(false)} className="others-profile-modal-backdrop"></div>}
+      {showComments && <CommentModal setShowComments={setShowComments} setCommentsLength = {setCommentsLength} postId={post._id} userName = {user.name} userId = {user._id}/>}
       {showothersProfileModal && <OthersProfileModal setShowOthersProfileModal={setShowOthersProfileModal} userId={post.userId} />}
       <img src={post.image ? process.env.REACT_APP_PUBLIC_FOLDER + post.image : ""} alt="" />
       <div className="post-user-description">
-        <span onClick={()=>setShowOthersProfileModal(true)} className="user-name-description"><b>{post.userName} </b></span>
+        <div onClick={()=>
+          {
+            if(post.userId ===user._id){
+              setShowProfileModal(true)
+            }else{
+              setShowOthersProfileModal(true)
+            }
+          }
+          } className="post-user-description-name-image">
+        <img src={thisUser?.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + thisUser?.profilePicture} alt="" />
+        <span  className="user-name-description"><b>{post.userName} </b></span>
+        </div>
         <br />
         <span className="post-name-description">{post.description}</span>
       </div>
