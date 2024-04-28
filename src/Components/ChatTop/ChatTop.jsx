@@ -58,6 +58,7 @@ const handleOnEnter = async(e)=>{
   setSendMessage({...message,receiverId})
   setSendMessage({...message, receiverId})
   console.log(message,'newmessage');
+  setNewMessage('')
   try {
     const{data} = await sendMessage(message)
     setMessages([...messages,data])
