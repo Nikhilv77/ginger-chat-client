@@ -79,7 +79,7 @@ gap: 3rem;
     width: 100vw;
     position: fixed;
     left: 0;
-    top: -100%;
+    top: -150%;
     background-color: var(--logoTextColorPrimary);
     /* background-color: rgba(255,223,0,0.5);
     backdrop-filter: blur(8px); */

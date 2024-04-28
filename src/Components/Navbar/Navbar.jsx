@@ -24,7 +24,7 @@ const Navbar = () => {
     document.getElementsByClassName('slider-modal')[0].style.top = 0;
   }
   const handleCloseNavbar = () => {
-    document.getElementsByClassName('slider-modal')[0].style.top = '-100%';
+    document.getElementsByClassName('slider-modal')[0].style.top = '-150%';
   }
   const openAllMembersModalHandler = ()=>{
     handleCloseNavbar();
