@@ -11,7 +11,9 @@ import FriendRequestsModal from "../../Modals/FriendRequestsModal/FriendRequests
 import EditProfileModal from "../../Modals/EditProfileModal/EditProfileModal";
 import FriendsModal from "../../Modals/FriendsModal/FriendsModal";
 const Posts = () => {
+
   const[receivedPost,setReceivedPost] = useState(null);
+  
   let[AllPosts,setAllPosts] = useState([])
   const[showProfileModal,setShowProfileModal] = useState(false)
   const[showFriendRequestsModal,setFriendRequestsModal] = useState(false)
@@ -65,6 +67,7 @@ socket.on('deleted-post',(postId)=>{
     {showFriendRequestsModal && <FriendRequestsModal setFriendRequestsModal={setFriendRequestsModal}/>}
     {thisUser && showEditAccount && <EditProfileModal thisUser = {thisUser}  setShowEditAccount={setShowEditAccount}/>}
     {showProfileModal && <ProfileModal setProfileUser = {setProfileUser} setFriendsModal = {setFriendsModal} setFriendRequestsModal = {setFriendRequestsModal} showProfileModal = {showProfileModal} setShowEditAccount = {setShowEditAccount} setShowProfileModal={setShowProfileModal}/>} 
+
     {friendsModal && <FriendsModal setFriendsModal={setFriendsModal}/>}
    {AllPosts?AllPosts.map((post,index)=>{
     return <Post setShowProfileModal = {setShowProfileModal} post = {post}/>

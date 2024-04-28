@@ -9,6 +9,7 @@ import CommentModal from "../../Modals/CommentsModal/CommentModal";
 import OthersProfileModal from "../../Modals/OtherProfileModal/OtherProfileModal";
 import { getUser } from "../../Api/UserAPI";
 import defaultPicture from "../../Images/default-picture.jpg"
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 const Post = ({ post,setShowProfileModal }) => {
@@ -109,6 +110,7 @@ useEffect(()=>{
     { showothersProfileModal && <div onClick={()=>setShowOthersProfileModal(false)} className="others-profile-modal-backdrop"></div>}
       {showComments && <CommentModal setShowComments={setShowComments} setCommentsLength = {setCommentsLength} postId={post._id} userName = {user.name} userId = {user._id}/>}
       {showothersProfileModal && <OthersProfileModal setShowOthersProfileModal={setShowOthersProfileModal} userId={post.userId} />}
+      
       <img src={post.image ? process.env.REACT_APP_PUBLIC_FOLDER + post.image : ""} alt="" />
       <div className="post-user-description">
         <div onClick={()=>

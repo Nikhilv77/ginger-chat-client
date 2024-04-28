@@ -124,16 +124,33 @@ margin-bottom: 0.3rem;
 }
 .chat-top-bottom{
   display: flex;
+  gap: 0.5rem;
 width: 92%;
 position: absolute;
 bottom: 2%;
 margin: auto;
 z-index: 999;
 height: 4rem;
-display: grid;
-grid-template-columns: auto 4rem;
 place-items: center;
 padding: 0.5rem 0 0 0;
+}
+.chat-top-bottom>input{
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0.2rem;
+  color: #333;
+  outline: none;
+  border: none;
+  padding: 0.7rem;
+  font-size: 1.1rem;
+  font-family: var(--font-family);
+  font-weight: 600;
+
+}
+.chat-top-bottom>i{
+  font-size: 2rem;
+  color: #ffdf00;
+  cursor: pointer;
 }
 .chat-top-bottom>button{
   background-color:#ffdf00;
@@ -174,6 +191,12 @@ padding: 0.5rem 0 0 0;
   background-color: rgba(255,255,255,0.5);
   backdrop-filter: blur(10px) brightness(90%);
 }
+.emoji-picker-container{
+  position: fixed;
+  bottom: 10%;
+  right: 3%;
+}
+
 @media screen and (max-width:800px){
   .chat-top{
  padding: 0 1rem 0 1rem;
@@ -193,6 +216,6 @@ padding: 0.5rem 0 0 0;
      }
      .chat-top-bottom{
     width: 97%;
-    padding: 0.5rem 1rem 0 0;
+    padding: 0.5rem 0.5rem 0 0.5rem;
     }
 }

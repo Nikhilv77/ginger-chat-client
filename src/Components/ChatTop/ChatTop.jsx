@@ -9,8 +9,12 @@ import InputEmoji from "react-input-emoji";
 import { sendMessage } from "../../Api/MessageAPI";
 import OthersProfileModal from '../../Modals/OtherProfileModal/OtherProfileModal';
 import defaultPicture from '../../Images/default-picture.jpg'
+import EmojiPicker from 'emoji-picker-react';
+
+
 
 const ChatTop = ({currentChat,currentUserId,setSendMessage,receivedMessage,setShowChatsModal,setPreviousRender}) => {
+  const [isPickerVisible,setIsPickerVisible] = useState(false);
   const scroll = useRef();
   console.log(receivedMessage,"received-message");
   const user = useSelector((state) => state.AuthReducer?.authData?.savedUser)
@@ -101,21 +105,18 @@ useEffect(() => {
   })}
 </div>
 <div className="chat-top-bottom">
-  <InputEmoji
-  fontFamily= 'Josefin Sans, sans-serif'
-  fontSize={21}
-  borderColor='#383838'
-  borderRadius={8}
-  height={60}
-onResize={()=>{
+  <div className="emoji-picker-container">
 
-}}  
-    value={newMessage}
-    onChange={setNewMessage}
-    cleanOnEnter
-    onEnter={handleOnEnter}
-    placeholder="Type a message"
-  />
+<EmojiPicker
+height={400}
+width={300}
+open = {isPickerVisible}
+onEmojiClick={(e)=>setNewMessage(newMessage + e.emoji)}
+theme='dark'
+className='emoji-picker'/>
+  </div>
+  <input value={newMessage} onChange={(e)=>setNewMessage(e.target.value)} type="text" placeholder='send a message...' />
+  <i onClick={()=>setIsPickerVisible(!isPickerVisible)} class="ri-emotion-happy-fill"></i>
   <button onClick={handleOnEnter}>Send</button>
 </div>
   </div>
