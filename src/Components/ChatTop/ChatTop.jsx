@@ -59,6 +59,7 @@ const handleOnEnter = async(e)=>{
     chatId:currentChat._id
   }
   setNewMessage("")
+  setIsPickerVisible(false);
   const receiverId = currentChat?.members?.find(id=>id!==currentUserId)
   setSendMessage({...message,receiverId})
   setSendMessage({...message, receiverId})
