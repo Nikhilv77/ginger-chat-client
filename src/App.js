@@ -12,7 +12,7 @@ import { useEffect,useState } from "react";
 
 function App() {
   const user = useSelector(state => state.AuthReducer?.authData?.savedUser);
-  const socket = io('http://localhost:8900');
+  const socket = io('https://ginger-socket.onrender.com');
 
   
 
@@ -53,5 +53,5 @@ function App() {
   );
 }
 
-export const socket = io('http://localhost:8900');
+export const socket = io('https://ginger-socket.onrender.com');
 export default App;
