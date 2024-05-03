@@ -81,7 +81,7 @@ const PostShare = () => {
   return <div className="post-share-card">
     <div className="upper-post-share">
     <img className="share-image" src={thisUser?.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + thisUser?.profilePicture} alt="" />
-        <input ref={desc} required className="share-input" type="text" placeholder={`What's on your mind, ${thisUser?.name.split(' ')[0]}?`} />
+        <input ref={desc} required className="share-input" type="text" placeholder={`What's on your mind?`} />
     </div>
    
    <div className="share-post-comps">
