@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API = axios.create({baseURL:'https://ginger-chat-server-9kbl.onrender.com'});
+const API = axios.create({baseURL:'https://gingerchat-server.onrender.com'});
 export const createPostAPI =(postData)=> API.post('/posts/createPost',postData);
 
 export const getAllPostsAPI = ()=>API.get('/posts/getAllPosts');
