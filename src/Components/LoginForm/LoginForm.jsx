@@ -51,7 +51,7 @@ const [authError,setAuthError] = useState(false)
                 setEmail(e.target.value)
               }}
               type="text"
-              placeholder="email"
+              placeholder="email - nykhilverma@gmail.com"
             />
           </div>
           <div className="password-input-login">
@@ -61,7 +61,7 @@ const [authError,setAuthError] = useState(false)
                 setPassword(e.target.value)
               }}
               type={showPassword ? 'text' : 'password'}
-              placeholder="Password"
+              placeholder="password - 123456"
             />
           { password && <i onClick={()=>setShowPassword(!showPassword)} class={showPassword?'ri-eye-fill':'ri-eye-off-fill'}></i>}
           </div>
