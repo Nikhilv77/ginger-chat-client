@@ -98,10 +98,10 @@ const handleDelete = ()=>{
   return (
     <div className="my-post">
       {showComments && <CommentModal setShowComments={setShowComments} setCommentsLength = {setCommentsLength} postId={post._id} userName = {user.name} userId = {user._id}/>}
-      <img src={post.image ? process.env.REACT_APP_PUBLIC_FOLDER + post.image : ""} alt="" />
+      <img src={post.image ? post.image : ""} alt="" />
       <div className="my-post-user-description">
       <div onClick={()=>setShowProfileModal(true)} className="mypost-user-description-name-image">
-        <img src={thisUser?.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + thisUser?.profilePicture} alt="" />
+        <img src={thisUser?.profilePicture===null?defaultPicture : thisUser?.profilePicture} alt="" />
         <span  className="user-name-description"><b>{post.userName} </b></span>
         </div>
         <br />

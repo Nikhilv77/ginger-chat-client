@@ -53,7 +53,7 @@ const ProfileModal = ({showProfileModal,setShowProfileModal,setShowEditAccount,s
 <div className="profile-modal-container-image-actions">
 <div className="profile-modal-container-image-actions-container">
   <h2>My Profile</h2>
-  <img src={user.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + user.profilePicture} alt="" />
+  <img src={user.profilePicture===null?defaultPicture : user.profilePicture} alt="" />
   <p>{user.about}</p>
   <div className="delete-update-actions">
     <button onClick={()=>{setShowEditAccount(true)

@@ -108,7 +108,7 @@ updateUserfn();
 {!thisUser && <ClipLoader color={"#fff"} size={40}/>}
 <div className="edit-profile-modal-items">
  <div className="edit-profile-modal-image">
- {newImage === null ?<img src={image===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + thisUser.profilePicture} alt="" />:<img src={URL.createObjectURL(newImage)} alt="" />}
+ {newImage === null ?<img src={image===null?defaultPicture : thisUser.profilePicture} alt="" />:<img src={URL.createObjectURL(newImage)} alt="" />}
   <i onClick={()=>imageRef.current.click()} class="ri-image-edit-fill"></i>
  </div>
 <form className="edit-profile-modal-form">

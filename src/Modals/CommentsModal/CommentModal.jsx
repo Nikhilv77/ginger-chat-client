@@ -70,7 +70,7 @@ const[thisUser,setThisUser] = useState(null)
    {comments.map(comment=>{
     return<> <div className="comment-modal-item">
       <div className="comment-modal-item-name-image">
-      <img src={comment.userProfilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + comment.userProfilePicture} alt="" />
+      <img src={comment.userProfilePicture===null?defaultPicture : comment.userProfilePicture} alt="" />
     <h4 className={comment.userId !== user._id ?"comment-modal-item-other-user":''} onClick={()=>{
       if(user._id !== comment.userId){
         setOtherUserId(comment.userId)

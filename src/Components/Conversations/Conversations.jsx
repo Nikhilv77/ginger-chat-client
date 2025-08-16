@@ -50,7 +50,7 @@ const Conversations = ({chat,currentUserId,previousRender}) => {
   
   return <div className='conversation-top'>
   <div className="conversation">
-  <img src={otherUsersData.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + otherUsersData.profilePicture} alt="" />
+  <img src={otherUsersData.profilePicture===null?defaultPicture : otherUsersData.profilePicture} alt="" />
     <div className="conversation-information">
     <p>{otherUsersData.name}</p>
    {thisUserData?.friends?.length>0 && thisUserData?.friends.includes(otherUsersData._id)? <span className='user-is-friend'>Friend❤</span>:<span className='user-is-stranger'>Stranger😈</span>}

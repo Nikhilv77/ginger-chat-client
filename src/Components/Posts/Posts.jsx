@@ -24,7 +24,7 @@ const Posts = () => {
     async function fetAllPosts(){
       try {
         const response = await fetchAllPosts();
-        console.log(response.data);
+   
         setAllPosts(response.data)
       } catch (error) {
         console.log(error);

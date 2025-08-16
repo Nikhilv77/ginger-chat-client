@@ -81,7 +81,7 @@ const FriendRequestsModal = ({setFriendRequestsModal}) => {
  
   {friendRequests.map(user=>{
     return (<div className="friend-requests-modal-item">
-   <img src={user.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + user.profilePicture} alt="" />
+   <img src={user.profilePicture===null?defaultPicture : user.profilePicture} alt="" />
       <div className="friend-requests-modal-item-description">
         <div className="friend-requests-modal-item-names">
       <p onClick={()=>{

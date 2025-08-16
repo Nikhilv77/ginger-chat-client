@@ -85,7 +85,7 @@ useEffect(() => {
 
 <div className="chat-top-upper">
   <div className='chat-top-upper-user'>
-  <img src={otherUsersData.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + otherUsersData.profilePicture} alt="" />
+  <img src={otherUsersData.profilePicture===null?defaultPicture : otherUsersData.profilePicture} alt="" />
 <p onClick={()=>setShowOthersProfileModal(true)}>{otherUsersData.name}</p>
 </div>
 <div onClick={()=>setShowChatsModal(true)} className="chat-top-upper-chats">

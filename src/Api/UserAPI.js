@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API = axios.create({baseURL:'https://gingerchat-server.onrender.com'})
+const API = axios.create({baseURL:"https://gingerchat-server.onrender.com"})
 // API.interceptors.request.use((req)=>{
 //     if(localStorage.getItem('user')){
 //         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('user')).token}`;

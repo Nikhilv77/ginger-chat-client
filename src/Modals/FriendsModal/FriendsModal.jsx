@@ -69,7 +69,7 @@ const FriendsModal = ({ setFriendsModal }) => {
               ) : (
                 friends.map(user => (
                   <div key={user._id} className="friends-modal-item">
-                    <img src={user?.profilePicture === null ? defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + user?.profilePicture} alt="" />
+                    <img src={user?.profilePicture === null ? defaultPicture : user?.profilePicture} alt="" />
                     <div className="friends-modal-item-description">
                       <div className="friends-modal-item-names">
                         <p onClick={() => setFriendsModal(true)}>{user?.name}</p>

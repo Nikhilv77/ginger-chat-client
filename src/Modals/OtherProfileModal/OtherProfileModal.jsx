@@ -128,7 +128,7 @@ const OthersProfileModal = ({setShowOthersProfileModal,userId,setPreviousRender}
   <h2>{user?.name}</h2>
   <span>@{user?.userName}</span>
   </div>
-  <img src={user?.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + user?.profilePicture} alt="" />
+  <img src={user?.profilePicture===null?defaultPicture : user?.profilePicture} alt="" />
   <p>{user?.about}</p>
   <div className="others-location">
   <i class="ri-map-pin-user-fill"></i>

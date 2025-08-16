@@ -145,7 +145,7 @@ const handleSearch = async()=>{
  
  {allUsers.map(user=>{
    return (<div className="all-members-modal-item">
-     <img src={user.profilePicture===null?defaultPicture : process.env.REACT_APP_PUBLIC_FOLDER + user.profilePicture} alt="" />
+     <img src={user.profilePicture===null?defaultPicture : user.profilePicture} alt="" />
      <div className="all-members-modal-item-description">
        <div className="all-members-modal-item-names">
      <p onClick={()=>{
